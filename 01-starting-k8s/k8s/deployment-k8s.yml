@@ -1,0 +1,21 @@
+apiVersion: apps/v1x
+kind: Deployment
+metadata:
+  name: k8s-test-app-depl
+spec:
+  replicas: 3
+  selector: # must be mapping with labels of pod(monitoring and management pods)
+    matchLabels:
+      app: test-app 
+      tier: backend
+  template:
+    apiVersion: v1
+    metadata:
+      labels:
+        app: test-app
+        tier: backend
+    spec:
+      container:
+        - name: test-app-container 
+          image: mountainseadevops/k8s-first-app
+

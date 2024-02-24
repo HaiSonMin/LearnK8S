@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8s-test-app-srv
+spec:
+  type: LoadBalancer
+  selector:
+    app: test-app
+    tier: backend
+  ports:
+    port: 80
+    targetPort: 8080
+    # port: 443
+    # targetPort: 443
